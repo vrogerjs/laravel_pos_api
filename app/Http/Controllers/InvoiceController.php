@@ -136,6 +136,11 @@ class InvoiceController extends Controller
         }
 
         $invoice->total = $totalPrice;
+
+        $invoice->code = $request->code;
+        $invoice->client = $request->client;
+        $invoice->details = $request->details;
+
         $invoice->save();
 
         return response()->json([
