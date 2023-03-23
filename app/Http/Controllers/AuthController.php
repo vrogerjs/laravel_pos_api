@@ -30,7 +30,7 @@ class AuthController extends Controller
 
         if (!Auth::attempt($credentials)) {
             return response()->json([
-                'message' => 'Cannot login with these credentials!'
+                'message' => 'No se puede iniciar sesión con estas credenciales!'
             ], 401);
         }
 
@@ -70,7 +70,7 @@ class AuthController extends Controller
         Auth::user()->token()->revoke();
 
         return response()->json([
-            'message' => 'Successfully logged out!'
+            'message' => 'Cerrar sesión con éxito!'
         ]);
     }
 
@@ -91,7 +91,7 @@ class AuthController extends Controller
 
         if ($admin_exists) {
             return response()->json([
-                'message' => 'An Admin account exists, so you cannot create another one!'
+                'message' => 'Existe una cuenta de administrador, por lo que no puede crear otra!'
             ], 401);
         }
 
@@ -110,7 +110,7 @@ class AuthController extends Controller
         $user->save();
 
         return response()->json([
-            'message' => 'Successfully created admin!'
+            'message' => 'Administrador creado con éxito!'
         ], 201);
     }
 
@@ -130,7 +130,7 @@ class AuthController extends Controller
 
         if(!Hash::check($request->oldPassword, Auth::user()->password)) {
             return response()->json([
-                'message' => 'Old password is not correct!'
+                'message' => 'La contraseña anterior no es correcta!'
             ], 401);
         }
 
